@@ -1,0 +1,68 @@
+@layout('layouts/main.edge')
+@set('title', 'Login')
+@section('body')
+<div class="h-screen w-100 bg-gray-100 flex justify-center items-center">
+  <form class="absolute top-5 right-5" action="/logout" method="post" accept-charset="utf-8">
+    <button type="submit" class="px-4 py-2 border-2 border-primary hover:shadow bg-gray-100 rounded">Logout</button>
+  </form>
+  <!--<form action="/enter-details" method="post">-->
+  <form action="/enter-details" method="post" class="flex flex-col justify-center items-center bg-white p-16 text-black rounded shadow-lg">
+    <img width="150" height="150" class="rounded-full" src="{{ auth.user.avatarUrl }}" alt="">
+    <h1 class="text-2xl">{{ auth.user.name }}</h1>
+    <div class="flex">
+    <input class="border mr-2 w-100 py-2 px-4 my-2 rounded" type="email" name="email" id="email" value="{{ auth.user.email }}" disabled />
+    <input class="border ml-2 w-100 py-2 px-4 my-2 rounded"
+      type="text"
+      name="avatarUrl"
+      id="avatarUrl"
+      placeholder="Enter Avatar URL"
+      value="{{ auth.user.avatarUrl }}"
+    />
+    </div>
+    <input class="border w-100 py-2 px-4 my-2 mr-2 rounded w-full"
+      type="text"
+      name="linkedin"
+      id="linkedin"
+      placeholder="Enter Linkedin Profile Link"
+      value="{{ auth.user.linkedin === null ? "" : auth.user.linkedin }}"
+    />
+    <input class="border w-100 py-2 px-4 my-2 mr-2 rounded w-full"
+      type="text"
+      name="twitter"
+      id="twitter"
+      placeholder="Enter Twitter Profile Link"
+      value="{{ auth.user.twitter === null ? "" : auth.user.twitter }}"
+    />
+    <div class="w-full flex justify-between items-center">
+    <input class="border w-100 py-2 px-4 my-2 mr-2 rounded w-full"
+      type="text"
+      name="facebook"
+      id="facebook"
+      placeholder="Enter Facebook Profile Link"
+      value="{{ auth.user.facebook === null ? "" : auth.user.facebook }}"
+      disabled
+    />
+    <a href="/connect/facebook" class="bg-primary ml-2 text-white rounded py-2 px-4">Connect</a>
+    </div>
+    <div class="w-full flex justify-between items-center">
+    <input class="border w-100 py-2 px-4 my-2 mr-2 rounded w-full"
+      type="text"
+      name="github"
+      id="github"
+      placeholder="Enter Github Profile Link"
+      value="{{ auth.user.github === null ? "" : auth.user.github }}"
+      disabled
+    />
+    <a href="/connect/github" class="bg-primary ml-2 text-white rounded py-2 px-4">Connect</a>
+    </div>
+    <input class="border w-100 py-2 px-4 my-2 rounded w-full"
+      type="text"
+      name="phone"
+      id="phone"
+      placeholder="Enter Phone Number"
+      value="{{ auth.user.phone === null ? "" : auth.user.phone }}"
+    />
+    <button class="mt-2 bg-primary text-white rounded py-2 px-4" type="submit">Submit</button>
+  </form>
+</div>
+@end
