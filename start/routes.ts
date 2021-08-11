@@ -20,17 +20,15 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view, response, auth }) => {
-  //await auth.use('web').authenticate()
-  if (auth.use('web').isLoggedIn) {
-    return response.redirect('/dashboard')
-  }
-  return view.render('welcome')
-})
+Route.group(() => {
+  Route.get('/', async ({ view }) => {
+    return view.render('welcome')
+  })
 
-Route.get('/login', 'AuthController.getLogin')
+  Route.get('/login', 'AuthController.getLogin')
 
-Route.get('/register', 'AuthController.getRegister')
+  Route.get('/register', 'AuthController.getRegister')
+}).middleware('guest')
 
 Route.post('/login', 'AuthController.login')
 
@@ -47,6 +45,10 @@ Route.get('/connect/github/callback', 'GithubsController.callback').middleware('
 
 Route.get('/connect/facebook', 'FacebooksController.redirect').middleware('auth')
 Route.get('/connect/facebook/callback', 'FacebooksController.callback').middleware('auth')
+
+Route.post('/api/v1/join-meet', 'ExtensionsController.joinedMeet')
+Route.post('/api/v1/leave-meet', 'ExtensionsController.leftMeet')
+Route.get('/api/v1/list-meet-people', 'ExtensionsController.listMeetPeople')
 
 //Route.get('/connect/linkedin', 'LinkedinsController.redirect').middleware('auth')
 //Route.get('/connect/linkedin/callback', 'LinkedinsController.callback').middleware('auth')

@@ -33,6 +33,12 @@ export default class User extends BaseModel {
   @column()
   public showData: boolean
 
+  @column()
+  public meetCode: string
+
+  @column()
+  public isCodeActive: boolean
+
   @column({ serializeAs: null })
   public password: string
 
