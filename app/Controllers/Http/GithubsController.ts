@@ -11,7 +11,7 @@ export default class GithubsController {
           client_id: Env.get('GITHUB_CLIENT_ID'),
           client_secret: Env.get('GITHUB_CLIENT_SECRET'),
           code,
-          redirect_uri: 'http://localhost:3333/connect/github/callback',
+          redirect_uri: 'https://cognizer.kavin.me/connect/github/callback',
         },
         {
           headers: {
@@ -48,7 +48,7 @@ export default class GithubsController {
     response.redirect(
       `https://github.com/login/oauth/authorize` +
         `?client_id=${Env.get('GITHUB_CLIENT_ID')}` +
-        `&redirect_uri=${encodeURIComponent('http://localhost:3333/connect/github/callback')}` +
+        `&redirect_uri=${encodeURIComponent('https://cognizer.kavin.me/connect/github/callback')}` +
         `&scope=${encodeURIComponent('read.user user.email')}` +
         // Base64 encoded email
         `&state=${btoa(auth.user!.email)}`

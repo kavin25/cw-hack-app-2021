@@ -11,7 +11,7 @@ export default class FacebooksController {
           client_id: Env.get('FACEBOOK_CLIENT_ID'),
           client_secret: Env.get('FACEBOOK_CLIENT_SECRET'),
           code,
-          redirect_uri: 'http://localhost:3333/connect/facebook/callback',
+          redirect_uri: 'https://cognizer.kavin.me/connect/facebook/callback',
         },
         {
           headers: {
@@ -46,7 +46,9 @@ export default class FacebooksController {
     response.redirect(
       `https://www.facebook.com/v11.0/dialog/oauth` +
         `?client_id=${Env.get('FACEBOOK_CLIENT_ID')}` +
-        `&redirect_uri=${encodeURIComponent('http://localhost:3333/connect/facebook/callback')}` +
+        `&redirect_uri=${encodeURIComponent(
+          'https://cognizer.kavin.me/connect/facebook/callback'
+        )}` +
         `&state=${btoa(auth.user!.email)}`
     )
   }
