@@ -43,8 +43,8 @@ Route.post('/enter-details', 'MainsController.enterRecords').middleware('auth')
 Route.get('/connect/github', 'GithubsController.redirect').middleware('auth')
 Route.get('/connect/github/callback', 'GithubsController.callback').middleware('auth')
 
-Route.get('/connect/facebook', 'FacebooksController.redirect').middleware('auth')
-Route.get('/connect/facebook/callback', 'FacebooksController.callback').middleware('auth')
+//Route.get('/connect/facebook', 'FacebooksController.redirect').middleware('auth')
+//Route.get('/connect/facebook/callback', 'FacebooksController.callback').middleware('auth')
 
 Route.post('/api/v1/join-meet', 'ExtensionsController.joinedMeet')
 Route.post('/api/v1/leave-meet', 'ExtensionsController.leftMeet')

@@ -63,6 +63,7 @@ export default class GithubsController {
     console.log(res.login)
     console.log('******')
     auth.user!.github = `https://github.com/${res.login}`
+    auth.user!.avatarUrl = res.avatar_url
     await auth.user!.save()
 
     return response.redirect('/dashboard')
